@@ -1,0 +1,63 @@
+/* contact.css */
+.container-contact100 {
+  margin-top: 0%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #d867c6;
+    background: -webkit-linear-gradient(45deg, #c77ff2, #e8519e);
+    background: -o-linear-gradient(45deg, #c77ff2, #e8519e);
+    background: -moz-linear-gradient(45deg, #c77ff2, #e8519e);
+    background: linear-gradient(45deg, #c77ff2, #e8519e);
+  }
+  
+  .contact-form-container {
+    background-color: white;
+    width: 50%;
+    padding: 20px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+  }
+  
+  .form-label {
+    margin-bottom: 10px;
+  }
+  
+  .form-input {
+    position: relative;
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-button {
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: #d867c6;
+    color: white;
+    cursor: pointer;
+    border-color: white;
+  }
+  
+ 
+  .form-textarea {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement */
+  }
