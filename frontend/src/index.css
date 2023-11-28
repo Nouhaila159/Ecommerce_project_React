@@ -80,5 +80,27 @@ form,h1 {
   background-color: #b3177f;
 }
 
+.custom-button1 {
+  /* Ajoutez ici vos styles communs aux deux boutons */
+  background-color: rgb(15, 90, 15);
+  color: #fff;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 10px; /* Espacement entre les boutons, ajustez selon vos besoins */
+}
+
+.custom-button2 {
+  /* Ajoutez ici vos styles communs aux deux boutons */
+  background-color: rgb(156, 10, 10);
+  color: #fff;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 10px; /* Espacement entre les boutons, ajustez selon vos besoins */
+}
 
 

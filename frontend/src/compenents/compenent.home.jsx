@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import '../home.css'; // Assurez-vous d'ajuster le chemin en fonction de la structure de votre projet
-import { Link } from "react-router-dom";
+import React from "react";
 
 export function HomePage() {
 

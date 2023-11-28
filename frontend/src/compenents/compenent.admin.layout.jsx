@@ -24,7 +24,10 @@ export function AdminLayout(){
 
                      </div>
               </nav>
+              <div>
               <Outlet/>
+              </div>
+              
               </>
        )
 }

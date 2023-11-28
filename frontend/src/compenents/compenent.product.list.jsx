@@ -46,9 +46,13 @@ export function ProductsList() {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>
-                <button onClick={() => deleteProduct(product._id)}>
+              <Link className="custom-button1" to={`/products/edit/${product._id}`}>
+                  Modifier
+                </Link>
+                <button className="custom-button2" onClick={() => deleteProduct(product._id)}>
                   Supprimer
                 </button>
+                
               </td>
             </tr>
           ))}

@@ -6,6 +6,7 @@ import { LoginPage } from './compenents/compenent.LoginPage'
 import { HomePage } from './compenents/compenent.home'
 import { Contact } from './compenents/compenent.contact'
 import { Routes, Route } from 'react-router-dom';
+import { ProductEdit } from './compenents/compenent.product.edit';
 
 function App(){
        return (
@@ -13,6 +14,7 @@ function App(){
               <Route path='/' element={<AdminLayout/>}>
                      <Route path='products' element={<ProductsList/>}/>
                      <Route path='products/new' element={<ProductAddForm/>}/>
+                     <Route path='products/edit/:id' element={<ProductEdit/>}/>
                      <Route path='login' element={<LoginPage />} />
                      <Route path='home' element={<HomePage />} />
                      <Route path='contact' element={<Contact />} />
