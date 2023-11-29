@@ -2,7 +2,7 @@ const Product=require("../models/Product")
 
 async function getAllProducts(req, res) {
        try{
-       const product = await Product.find();
+       const product = await Product.find().populate("category");
        res.json(product);
        }catch(error){
        res.status(500).send("Erreur dans le serveur");
@@ -13,7 +13,7 @@ async function getAllProducts(req, res) {
 async function getProductById(req,res){
        const idP=req.params.id;
        try{
-       const product = await Product.findById(idP);
+       const product = await Product.findById(idP).populate("category");
        res.json(product);
        }catch(error){
        res.status(500).send("Erreur dans le serveur");

@@ -10,8 +10,11 @@ export function AdminLayout(){
                                           <NavLink className={"nav-link"} to={"/home"}> Home </NavLink>
                                    </li>
                                    <li>
-                                          <NavLink className={"nav-link"} to={"/products"}> products </NavLink>
+                                          <NavLink className={"nav-link"} to={"/products"}> produits </NavLink>
                                    </li>
+                                   <li>
+                                          <NavLink className={"nav-link"} to={"/categories"}> Categories </NavLink>
+                                   </li> 
                                    <li>
                                           <NavLink className={"nav-link"} to={"/contact"}> Contacts </NavLink>
                                    </li>

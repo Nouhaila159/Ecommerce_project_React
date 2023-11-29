@@ -10,7 +10,7 @@ const router = express.Router();
 // Définition des routes pour les opérations CRUD sur les produits
 
 // Route GET "/products" pour récupérer tous les produits
-router.route("/products")
+router.route("/")
   .get(productController.getAllProducts)
   // Route POST "/products" pour ajouter un nouveau produit
   .post(productController.addProduct);
@@ -18,7 +18,7 @@ router.route("/products")
 // Route GET "/products/:id" pour récupérer un produit par son identifiant
 // Route DELETE "/products/:id" pour supprimer un produit par son identifiant
 // Route PATCH "/products/:id" pour mettre à jour juste ce qu'on veut modifier d'un produit par son identifiant
-router.route("/products/:id")
+router.route("/:id")
   .get(productController.getProductById)
   .delete(productController.deleteProductById)
   .patch(productController.updateProduct);

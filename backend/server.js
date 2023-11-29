@@ -3,6 +3,7 @@ const express=require("express");
 const app=express();
 const cors=require("cors");
 const productrouter=require("./routes_server/products.routes");
+const categoryrouter=require("./routes_server/categories.routes");
 const mongoose=require("mongoose");
 const dotenv=require("dotenv");
 dotenv.config()
@@ -13,6 +14,8 @@ mongoose.connect(process.env.DB_URL)
 //************multi origin cross solution************* */
 app.use(cors());
 app.use(express.json());
-app.use("/",productrouter);
+app.use("/products",productrouter);
+app.use("/categories",categoryrouter);
+
 
 

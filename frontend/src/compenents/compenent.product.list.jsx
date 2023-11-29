@@ -37,6 +37,7 @@ export function ProductsList() {
           <tr>
             <th>Nom</th>
             <th>Prix</th>
+            <th>Categorie</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -45,6 +46,7 @@ export function ProductsList() {
             <tr key={index}>
               <td>{product.name}</td>
               <td>{product.price}</td>
+              <td>{product.category.name}</td>
               <td>
               <Link className="custom-button1" to={`/products/edit/${product._id}`}>
                   Modifier
