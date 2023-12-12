@@ -1,7 +1,7 @@
 import http from './http-common'; 
 
-export async function getAllProduct(){
-       return await http.get("/products");
+export async function getProduct(query){
+       return await http.get(`/products?keyword=${query}`);
 }
 export async function deleteProductByID(id){
        return await http.delete(`/products/${id}`);

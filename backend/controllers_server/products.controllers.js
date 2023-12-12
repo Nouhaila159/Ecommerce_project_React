@@ -1,9 +1,16 @@
-const Product=require("../models/Product")
+//const Product=require("../models/Product")
+const catalogServices=require("../services/catalog.services")
 
 async function getAllProducts(req, res) {
        try{
-       const product = await Product.find().populate("category");
-       res.json(product);
+              let products=[];
+          if(req.query.keyword){
+              products = await catalogServices.findProductByQuery(req.query.keyword);
+          }
+          else{
+              products = await catalogServices.findProducts();
+          }
+       res.json(products);
        }catch(error){
        res.status(500).send("Erreur dans le serveur");
       }
@@ -13,7 +20,7 @@ async function getAllProducts(req, res) {
 async function getProductById(req,res){
        const idP=req.params.id;
        try{
-       const product = await Product.findById(idP).populate("category");
+       const product = await catalogServices.findProductById(idP);
        res.json(product);
        }catch(error){
        res.status(500).send("Erreur dans le serveur");
@@ -23,7 +30,7 @@ async function getProductById(req,res){
 
 async function addProduct(req,res){
        try{
-       const product = await Product.create(req.body);
+       const product = await catalogServices.saveProduct(req.body);
        res.status(201).json(product);
        }catch(error){
        res.status(500).send("Erreur dans l'ajout de produit");
@@ -33,7 +40,7 @@ async function addProduct(req,res){
 async function deleteProductById(req,res){
        const idP = req.params.id;
        try{
-       const product = await Product.findByIdAndDelete(idP);
+       const product = await catalogServices.removeProductById(idP);
        res.send("Le produit a était bien supprimé");
        }catch(error){
        res.status(500).send("Erreur dans la suppression de produit");
@@ -44,7 +51,7 @@ async function deleteProductById(req,res){
 async function updateProduct(req,res){
        const idP = req.params.id;
        try{
-       const product = await Product.findByIdAndUpdate(idP,req.body);
+       await catalogServices.editProduct(idP,req.body);
        res.send("Le produit a était bien modifié");
        }catch(error){
        res.status(500).send("Erreur dans la suppression de produit");

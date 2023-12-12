@@ -1,11 +1,32 @@
-const Category=require("../models/Category")
-const Product=require("../models/Product")
+const catalogServices=require("../services/catalog.services")
 
 
 async function getAllCategories(req, res) {
        try{
-       const categories = await Category.find();
+              let categories=[];
+          if(req.query.keyword){
+              categories = await catalogServices.findCategoryByQuery(req.query.keyword);
+          }
+          else{
+              categories = await catalogServices.findCategories();
+          }
        res.status(200).json(categories);
+       }catch(error){
+       res.status(500).send("Erreur dans le serveur");
+      }
+}
+
+
+async function getAllProducts(req, res) {
+       try{
+              let products=[];
+          if(req.query.keyword){
+              products = await catalogServices.findProductByQuery(req.query.keyword);
+          }
+          else{
+              products = await catalogServices.findProducts();
+          }
+       res.json(products);
        }catch(error){
        res.status(500).send("Erreur dans le serveur");
       }
@@ -13,7 +34,7 @@ async function getAllCategories(req, res) {
 
 async function addCategory(req, res) {
        try{
-              await Category.create(req.body);
+              await catalogServices.saveCategory(req.body);
               res.status(201).send("Category Bien ajoutée");
        }catch(error){
               res.status(500).send("Erreur dans l'ajout de category");
@@ -23,7 +44,7 @@ async function addCategory(req, res) {
 async function getCategoryById(req,res){
        const idC=req.params.id;
        try{
-       const category=await Category.findById(idC);
+       const category=await catalogServices.findCategoryById(idC);
        res.json(category);
        }catch(error){
        res.status(500).send("Erreur dans le serveur");
@@ -35,9 +56,7 @@ async function getCategoryById(req,res){
 async function deleteCategoryById(req,res){
        const idC = req.params.id;
        try{
-       await  Category.findByIdAndDelete(idC);
-       // Supprimer les produits associés
-       await Product.deleteMany({ category: idC });
+       await  catalogServices.removeCategoryById(idC);
        res.send("La categorie a était bien supprimée");
        }catch(error){
        res.status(500).send("Erreur dans la suppression de categorie");
@@ -48,7 +67,7 @@ async function deleteCategoryById(req,res){
 async function updateCategory(req,res){
        const idC = req.params.id;
        try{
-       await Category.findByIdAndUpdate(idC,req.body);
+       await catalogServices.editCategory(idC,req.body);
        res.send("La categorie a était bien modifiée");
        }catch(error){
        res.status(500).send("Erreur dans la suppression de categorie");

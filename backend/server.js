@@ -4,6 +4,7 @@ const app=express();
 const cors=require("cors");
 const productrouter=require("./routes_server/products.routes");
 const categoryrouter=require("./routes_server/categories.routes");
+const loginrouter=require("./routes_server/login.routes");
 const mongoose=require("mongoose");
 const dotenv=require("dotenv");
 dotenv.config()
@@ -16,6 +17,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/products",productrouter);
 app.use("/categories",categoryrouter);
-
+app.use("/users",loginrouter);
 
 
