@@ -12,18 +12,18 @@ export function ProductEdit(){
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate();
     const { id } = useParams();
+    const query=''
 
     useEffect(() => {
         fetchProduct();
         fetchCategories();
-    }, []);
+    }, [query]);
 
     async function fetchProduct() {
       try {
           const response = await getProductByID(id);
           const p = response.data;
           console.log('Product data:', p);
-  
           setSelectedCat(p.category && p.category._id ? p.category._id : '');
           setName(p.name);
           setPrice(p.price);
@@ -35,7 +35,7 @@ export function ProductEdit(){
 
     async function fetchCategories() {
         try {
-            const res = await getCategory();
+            const res = await getCategory(query);
             setCategories(res.data);
         } catch (error) {
             console.error("Error fetching categories:", error);

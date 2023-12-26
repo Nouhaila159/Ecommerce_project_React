@@ -23,6 +23,7 @@ export function CategoryAddForm(){
   <form onSubmit={(e)=>handlForm(e)}>
     <label htmlFor='name'>Nom de categorie :</label>
     <input type='text' id='name' placeholder='saisir un nom'  onChange={(event)=>setName(event.target.value)}></input>
+    
     <input type='submit' value='Ajouter à la liste'></input>
     <input type='reset' value='Réinitialiser'></input>
     </form>

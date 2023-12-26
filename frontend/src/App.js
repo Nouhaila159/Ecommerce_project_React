@@ -17,7 +17,7 @@ function App() {
        return (
          <Routes>
            <Route path='/admin' element={<AdminLayout/>}>
-             <Route path='' element={<HomePage />} />
+             <Route path='home' element={<HomePage />} />
              <Route path='products' element={<ProductsList/>}/>
              <Route path='products/new' element={<ProductAddForm/>}/>
              <Route path='products/edit/:id' element={<ProductEdit/>}/>

@@ -3,6 +3,7 @@ const catalogServices=require("../services/catalog.services")
 
 async function getAllProducts(req, res) {
        try{
+              console.log(req.headers);
               let products=[];
           if(req.query.keyword){
               products = await catalogServices.findProductByQuery(req.query.keyword);
@@ -28,14 +29,20 @@ async function getProductById(req,res){
 
 }
 
-async function addProduct(req,res){
+async function addProduct (req,res){
        try{
-       const product = await catalogServices.saveProduct(req.body);
-       res.status(201).json(product);
+        //const product = await catalogServices.saveProduct(req.body);
+        console.log(req.file);
+        console.log(req.body);
+        const p=JSON.parse(req.body.productData);
+        p.image="/uploads/"+req.file.filename;
+        const product=await catalogServices.saveProduct(p);
+        res.status(201).json("");
        }catch(error){
-       res.status(500).send("Erreur dans l'ajout de produit");
+         res.status(500).send("erreur d'ajout");
        }
-}
+       
+    }
 
 async function deleteProductById(req,res){
        const idP = req.params.id;

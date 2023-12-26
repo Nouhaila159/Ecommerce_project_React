@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import '../../login.css'; // Make sure to adjust the path based on your project structure
-import { Link } from "react-router-dom";
-import { addUser} from '../../sevices/login.services';
+import { addUser, userLogin} from '../../sevices/login.services';
+import { useNavigate } from 'react-router-dom';
+
 
 export function LoginPage() {
   const [tab, setTab] = useState('sign-in');
@@ -9,6 +10,8 @@ export function LoginPage() {
   const [fName,setFname]=useState("");
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
+  const navigate=useNavigate();   
+
 
   const handleTabChange = (newTab) => {
     setTab(newTab);
@@ -18,6 +21,14 @@ export function LoginPage() {
     event.preventDefault(); 
     const user={"lName":lName,"fName":fName,"email":email,"password":password}
     await addUser(user);
+  }
+
+  async function handlForm2(event){
+    event.preventDefault(); 
+    const rep= await userLogin({"email":email,"password":password})
+    const token= rep.data;
+    await localStorage.setItem("jwtToken",token); 
+    navigate("/admin/products");  
   }
 
   return (
@@ -55,13 +66,14 @@ export function LoginPage() {
                       <div className="group">
                       <br/>
                         <label htmlFor="user" className="label">
-                          Username
+                          Email
                         </label>
                         <input
                           id="user"
                           type="text"
                           className="input"
-                          placeholder="Enter your username"
+                          placeholder="Enter your email"
+                          onChange={e=>setEmail(e.target.value)}
                         />
                       </div>
                       <div className="group">
@@ -74,6 +86,7 @@ export function LoginPage() {
                           className="input"
                           data-type="password"
                           placeholder="Enter your password"
+                          onChange={e=>setPassword(e.target.value)}
                         />
                       </div>
                       <br/>
@@ -90,9 +103,14 @@ export function LoginPage() {
                       </div>
                       <br/>
                       <div className="group">
-                      <Link to={"/admin"} type="submit" className="button centered-text">Sign In</Link>  
+                        <button
+                              type="button"
+                              className="button centered-text"
+                              onClick={(e) => handlForm2(e)}
+                            >
+                      Sign In </button>                     
                       </div>
-                      <div className="hr"></div>
+
                       <div className="foot">
                         <a href="#">Forgot Password?</a>
                       </div>
@@ -152,13 +170,12 @@ export function LoginPage() {
                       </div>
                       <br/>
                       <div className="group">
-                      <Link to={"/admin"}>
                         <button
                               type="button"
                               className="button centered-text"
                               onClick={(e) => handlForm(e)}
                             >
-                      Sign Up </button></Link>                      
+                      Sign Up </button>                    
                       </div>
                       </div>
                   )}

@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema({
   name: String,  // Champ "name" de type String (chaîne de caractères)
   price: Number, // Champ "price" de type Number (nombre)
+  image:String, 
   category:{
       type:mongoose.Types.ObjectId,
       ref:"Category"

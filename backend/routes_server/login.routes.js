@@ -8,7 +8,8 @@ const loginController = require("../controllers_server/login.controllers");
 const router = express.Router();
 
 // Route GET "/products" pour récupérer tous les produits
-router.route("/")
-  .post(loginController.addUser);
+router.route("/signUp").post(loginController.signUp);
+router.route("/login").post(loginController.login);
+
 
 module.exports = router;

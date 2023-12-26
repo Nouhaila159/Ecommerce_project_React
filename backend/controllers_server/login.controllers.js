@@ -1,6 +1,6 @@
 const loginServices=require("../services/login.services")
 
-async function addUser(req,res){
+async function signUp(req,res){
        try{
        const user = await loginServices.saveUser(req.body);
        res.status(201).json(user);
@@ -10,4 +10,13 @@ async function addUser(req,res){
        }
 }
 
-module.exports={addUser}
+async function login(req,res){
+       try{
+              const token=await loginServices.loginService(req.body);
+              res.status(201).json(token);
+       }catch{
+              res.status(500).json(error);
+       }
+}
+
+module.exports={signUp,login}

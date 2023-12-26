@@ -13,7 +13,6 @@ async function findProductById(idP){
 
 async function findProductByQuery(query){
        return await Product.find({name:{$regex:query,$options:"i"}}).populate("category");
-
 }
 
 async function saveProduct(p){
