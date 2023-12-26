@@ -36,7 +36,7 @@ async function addProduct (req,res){
         console.log(req.body);
         const p=JSON.parse(req.body.productData);
         p.image="/uploads/"+req.file.filename;
-        const product=await catalogServices.saveProduct(p);
+        await catalogServices.saveProduct(p);
         res.status(201).json("");
        }catch(error){
          res.status(500).send("erreur d'ajout");
@@ -47,7 +47,7 @@ async function addProduct (req,res){
 async function deleteProductById(req,res){
        const idP = req.params.id;
        try{
-       const product = await catalogServices.removeProductById(idP);
+       await catalogServices.removeProductById(idP);
        res.send("Le produit a était bien supprimé");
        }catch(error){
        res.status(500).send("Erreur dans la suppression de produit");

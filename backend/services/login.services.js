@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt")
 const User = require("../models/User");
-const { response } = require("express");
 const jwt = require("jsonwebtoken");
 const dotevn=require("dotenv");
 
@@ -8,7 +7,6 @@ dotevn.config()
 
 async function saveUser(user){
        const salt=await bcrypt.genSalt();
-       console.log(user);
        user.password=await bcrypt.hash(user.password,salt);
        return await User.create(user)
 }
@@ -21,7 +19,9 @@ async function loginService(loginData){
            const token=jwt.sign({"email":user[0].email},process.env.SECRET_KEY,{expiresIn: '1h'});
            return token;
        }
-      
+       else{
+        console.log("user doesn't exist");
+       }
   }
 }
 

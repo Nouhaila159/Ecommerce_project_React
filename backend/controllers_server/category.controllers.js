@@ -16,22 +16,6 @@ async function getAllCategories(req, res) {
       }
 }
 
-
-async function getAllProducts(req, res) {
-       try{
-              let products=[];
-          if(req.query.keyword){
-              products = await catalogServices.findProductByQuery(req.query.keyword);
-          }
-          else{
-              products = await catalogServices.findProducts();
-          }
-       res.json(products);
-       }catch(error){
-       res.status(500).send("Erreur dans le serveur");
-      }
-}
-
 async function addCategory(req, res) {
        try{
               await catalogServices.saveCategory(req.body);

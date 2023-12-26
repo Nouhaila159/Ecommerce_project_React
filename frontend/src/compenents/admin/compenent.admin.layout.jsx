@@ -26,7 +26,8 @@ export function AdminLayout(){
                                    </li>
                                    <li>
                                           {(localStorage.getItem("jwtToken"))?
-                                          <NavLink onClick={(e) => logout(e)} className={"nav-link"}> Se déconnecter </NavLink>:<NavLink className={"nav-link"} to="/admin/login"> Connexion </NavLink>}
+                                          <NavLink onClick={(e) => logout(e)} className={"nav-link"}> Se déconnecter </NavLink>:
+                                          <NavLink className={"nav-link"} to="/admin/login"> Connexion </NavLink>}
                                    </li>       
 
 

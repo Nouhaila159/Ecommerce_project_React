@@ -34,9 +34,9 @@ router.route("/")
 // Route DELETE "/products/:id" pour supprimer un produit par son identifiant
 // Route PATCH "/products/:id" pour mettre à jour juste ce qu'on veut modifier d'un produit par son identifiant
 router.route("/:id")
-  .get(productController.getProductById)
-  .delete(productController.deleteProductById)
-  .patch(productController.updateProduct);
+  .get(loginMiddelware.jwtVerify,productController.getProductById)
+  .delete(loginMiddelware.jwtVerify,productController.deleteProductById)
+  .patch(loginMiddelware.jwtVerify,productController.updateProduct);
 
 // Exportation du routeur pour une utilisation ultérieure
 module.exports = router;

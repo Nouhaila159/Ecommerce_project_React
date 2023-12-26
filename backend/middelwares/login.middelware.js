@@ -1,6 +1,8 @@
 const jwt=require("jsonwebtoken");
+
 const dotevn=require("dotenv");
 dotevn.config()
+
 async function jwtVerify(req,res,next){
        const token=req.headers.authorization;
        console.log(token);
