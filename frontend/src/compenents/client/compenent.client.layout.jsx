@@ -10,16 +10,16 @@ export function ClientLayout(){
                                    <NavLink className="nav-link" to="" exact>Home</NavLink>                                   
                                    </li>
                                    <li>
-                                          <NavLink className={"nav-link"} to="/admin/products"> produits </NavLink>
+                                          <NavLink className={"nav-link"} to=""> produits </NavLink>
                                    </li>
                                    <li>
-                                          <NavLink className={"nav-link"} to="/admin/categories"> Categories </NavLink>
+                                          <NavLink className={"nav-link"} to=""> Categories </NavLink>
                                    </li> 
                                    <li>
-                                          <NavLink className={"nav-link"} to="/admin/contact"> Contacts </NavLink>
+                                          <NavLink className={"nav-link"} to=""> Contacts </NavLink>
                                    </li>
                                    <li>
-                                          <NavLink className={"nav-link"} to="/admin/login"> Connexion </NavLink>
+                                          <NavLink className={"nav-link"} to=""> Connexion </NavLink>
                                    </li>       
 
 
